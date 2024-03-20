@@ -1,13 +1,46 @@
 {% extends 'base/base.html' %}
 {% block content %}
-<h1>Login</h1>
+<style>
 
-<form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Log in">
-</form>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 50vh;
+      flex-direction: column;
 
+    }
 
-<p>Don`t have an account? <a href="{% url 'register' %}"> Register</a></p>
-{% endblock content %}
+      form {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .content {
+      border: 2px solid rgba(83, 186, 52, 0.5);
+      padding: 20px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 4px 4px 40px 20px rgba(83, 186, 52, 0.2);
+      box-sizing: border-box;
+    }
+
+    h1 {
+      text-align: center;
+    }
+</style>
+
+<div class="container">
+    <h1>Login</h1>
+    <div class="content">
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Log in">
+        </form>
+
+    </div>
+      <p>Don`t have an account? <a href="{% url 'register' %}"> Register</a></p>
+</div>{% endblock content %}

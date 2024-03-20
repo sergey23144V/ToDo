@@ -44,36 +44,46 @@ table.greyGridTable tfoot {
 table.greyGridTable tfoot td {
   font-size: 14px;
 }
+.table{
+    border: 2px solid rgba(83, 186, 52, 0.5);
+    padding: 20px;
+    width: 100%;
+    box-shadow: 4px 4px 40px 20px rgba(83, 186, 52, 0.2);
+    box-sizing: border-box;
+    }
+
 </style>
 
-<table class="greyGridTable">
-    <thead>
-    <tr>
-        <th>Task</th>
-        <th>Priority</th>
-        <th>Start</th>
-        <th>Deadline</th>
-        <th>Completed</th>
-        <th colspan="2">Actions</th>
-    </tr>
-    </thead>
-    {% for task in tasks %}
-    <tbody>
-    <tr>
-        <td>{{task.title}}</td>
-        <td>{{task.priority}}</td>
-        <td>{{task.date_start}}</td>
-        <td>{{task.date_end}}</td>
-        <td>{{task.complete}}</td>
-        <td><a href="{% url 'task-update' task.id %}"> Edit </a></td>  
-        <td><a href="{% url 'task-delete' task.id %}"> Delete </a></td>  
-    </tr>
-    </tbody>
-    {% empty %}
-<h3> you have no tasks yet</h3>
-{% endfor %}
-</table>
+<div class="container table">
+    <table class="greyGridTable ">
+        <thead>
+        <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Start</th>
+            <th>Deadline</th>
+            <th>Completed</th>
+            <th colspan="2">Actions</th>
+        </tr>
+        </thead>
+        {% for task in tasks %}
+        <tbody>
+        <tr>
+            <td>{{task.title}}</td>
+            <td>{{task.priority}}</td>
+            <td>{{task.date_start}}</td>
+            <td>{{task.date_end}}</td>
+            <td>{{task.complete}}</td>
+            <td><a href="{% url 'task-update' task.id %}"> Edit </a></td>
+            <td><a href="{% url 'task-delete' task.id %}"> Delete </a></td>
+        </tr>
+        </tbody>
+        {% empty %}
+    <h3> You have no tasks yet</h3>
 
-<a href="{% url 'task-create' %}">Add task</a>
+        {% endfor %}
+    </table>
 
+    <a href="{% url 'task-create' %}">Add task</a>
+</div>
 {% endblock content %}
